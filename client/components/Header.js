@@ -24,9 +24,9 @@ const style = {
 
 const Header = () => {
   const [selectedNav, setSelectedNav] = useState('swap')
-  const { FUNNY_MESSAGE, connectWallet } = useContext(TransactionContext)
+  const { currentAccount, connectWallet } = useContext(TransactionContext)
 
-  console.log({ FUNNY_MESSAGE, connectWallet })
+  console.log({ currentAccount, connectWallet })
   // useEffect(() => {
   //   if (currentAccount) {
   //     ;(async () => {
@@ -101,14 +101,20 @@ const Header = () => {
           </div>
         </div>
 
-        <div
-          onClick={() => connectWallet()}
-          className={`${style.button} ${style.buttonPadding}`}
-        >
-          <div className={`${style.buttonAccent} ${style.buttonPadding}`}>
-            Connect Wallet
+        {currentAccount ? (
+          <div className={`${style.button} ${style.buttonPadding}`}>
+            <div className={style.buttonTextContainer}> 0x88....5c </div>
           </div>
-        </div>
+        ) : (
+          <div
+            onClick={() => connectWallet()}
+            className={`${style.button} ${style.buttonPadding}`}
+          >
+            <div className={`${style.buttonAccent} ${style.buttonPadding}`}>
+              Connect Wallet
+            </div>
+          </div>
+        )}
 
         <div className={`${style.button} ${style.buttonPadding}`}>
           <div className={`${style.buttonIconContainer} mx-2`}>

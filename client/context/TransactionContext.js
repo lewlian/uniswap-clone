@@ -15,8 +15,6 @@ export const TransactionProvider = ({ children }) => {
     checkIfWalletIsConnected()
   }, [])
 
-  const FUNNY_MESSAGE = 'HAHAHA'
-
   const connectWallet = async (metamask = eth) => {
     try {
       if (!metamask) return alert('Please install metamask')
@@ -47,7 +45,7 @@ export const TransactionProvider = ({ children }) => {
   return (
     <TransactionContext.Provider
       value={{
-        FUNNY_MESSAGE,
+        currentAccount,
         connectWallet,
       }}
     >
