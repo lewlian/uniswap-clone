@@ -14,10 +14,18 @@ smart_contract--contains the blockchain module that has the SC responsible for p
 
 studio--sanity client that acts as a database so that data retrieval for transaction history is faster
 
-To run locally, clone the repo, go to `studio`
-```sanity start```
+### Local deployment
+
+clone the repo, go to `studio`
+
+```bash
+sanity start
+```
 
 go to `client`
-```npm run dev```
+
+```bash
+npm run dev
+```
 
 then you can view your app on localhost:3000. Take note of some configurations in `lib` folder under `client`
