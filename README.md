@@ -7,8 +7,11 @@ Tutorial just had a simple SC and covered more about the integration of metamask
 Nonetheless, Completed Dapp and deployed via vercel to: https://uniswap-blockchain-clone-ruby.vercel.app/
 
 Project is broken down into 3 folders
+
 client--contains the frontend repo
+
 smart_contract--contains the blockchain module that has the SC responsible for processing transactions
+
 studio--sanity client that acts as a database so that data retrieval for transaction history is faster
 
 To run locally, clone the repo, go to `studio`
