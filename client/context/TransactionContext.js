@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { contractABI, contractAddress } from '../lib/constants'
 import { ethers } from 'ethers'
 import { client } from '../lib/sanityClient'
+import { useRouter } from 'next/router'
 
 export const TransactionContext = React.createContext()
 
@@ -31,7 +32,7 @@ export const TransactionProvider = ({ children }) => {
     addressTo: '',
     amount: '',
   })
-
+  const router = useRouter()
   //create user profile in Sanity if it doesn't exit
 
   useEffect(() => {
@@ -50,6 +51,15 @@ export const TransactionProvider = ({ children }) => {
   useEffect(() => {
     checkIfWalletIsConnected()
   }, [])
+
+  // triggers loading modal
+  useEffect(() => {
+    if (isLoading) {
+      router.push(`./?loading=${currentAccount}`)
+    } else {
+      router.push(`/`)
+    }
+  }, [isLoading])
 
   const connectWallet = async (metamask = eth) => {
     try {
@@ -168,6 +178,7 @@ export const TransactionProvider = ({ children }) => {
         sendTransaction,
         handleChange,
         formData,
+        isLoading,
       }}
     >
       {children}
